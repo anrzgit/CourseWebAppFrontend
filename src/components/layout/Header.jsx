@@ -51,10 +51,7 @@ const Header = ({ isAuthenticated = false, user }) => {
       >
         <RiMenu5Fill />
       </Button>
-      <Flex margin={6} zIndex={'overlay'} position={'relative'} >
-      <Spacer />
-          <ColorModeSwitcher />
-      </Flex>
+      
       
 
       <Drawer placement="left" onClose={onClose} isOpen={isOpen}>

@@ -1,43 +1,74 @@
-import { Box, Heading, HStack, Stack, VStack } from '@chakra-ui/react';
-import React from 'react';
+'use client'
+
 import {
-  TiSocialYoutubeCircular,
-  TiSocialInstagramCircular,
-} from 'react-icons/ti';
-import { DiGithub } from 'react-icons/di';
-const Footer = () => {
+  Box,
+  chakra,
+  Container,
+  Stack,
+  Text,
+  useColorModeValue,
+  VisuallyHidden,
+} from '@chakra-ui/react'
+import { FaInstagram, FaTwitter, FaYoutube } from 'react-icons/fa'
+import Logo from '../../assets/images/logo-transparent-png.png'
+
+
+
+
+const SocialButton = ({
+  children,
+  label,
+  href,
+}) => {
   return (
-    <Box padding={'4'} bg="blackAlpha.900" minH={'10vh'}>
-      <Stack direction={['column', 'row']}>
-        <VStack alignItems={['center', 'flex-start']} width="full">
-          <Heading children="All Rights Reserved" color={'white'} />
-          <Heading
-            fontFamily={'body'}
-            size="sm"
-            children="@6 Pack Programmer"
-            color={'yellow.400'}
-          />
-        </VStack>
+    <chakra.button
+      bg={useColorModeValue('blackAlpha.100', 'whiteAlpha.100')}
+      rounded={'full'}
+      w={8}
+      h={8}
+      cursor={'pointer'}
+      as={'a'}
+      href={href}
+      display={'inline-flex'}
+      alignItems={'center'}
+      justifyContent={'center'}
+      transition={'background 0.3s ease'}
+      _hover={{
+        bg: useColorModeValue('blackAlpha.200', 'whiteAlpha.200'),
+      }}>
+      <VisuallyHidden>{label}</VisuallyHidden>
+      {children}
+    </chakra.button>
+  )
+}
 
-        <HStack
-          spacing={['2', '10']}
-          justifyContent="center"
-          color={'white'}
-          fontSize="50"
-        >
-          <a href="https://youtube.com/6packprogrammer" target={'blank'}>
-            <TiSocialYoutubeCircular />
-          </a>
-          <a href="https://instagram.com/meabhisingh" target={'blank'}>
-            <TiSocialInstagramCircular />
-          </a>
-          <a href="https://github.com/meabhisingh" target={'blank'}>
-            <DiGithub />
-          </a>
-        </HStack>
-      </Stack>
+export default function SmallWithLogoLeft() {
+  return (
+    <Box
+      bg={useColorModeValue('gray.50', 'gray.900')}
+      color={useColorModeValue('gray.700', 'gray.200')}>
+      <Container
+        as={Stack}
+        maxW={'6xl'}
+        py={4}
+        direction={{ base: 'column', md: 'row' }}
+        spacing={4}
+        justify={{ base: 'center', md: 'space-between' }}
+        align={{ base: 'center', md: 'center' }}>
+        <img src={Logo} width={'160'} alt="" />
+        <Text>© 2023 Made by anrz</Text>
+        <Stack direction={'row'} spacing={6}>
+          <SocialButton label={'Twitter'} href={'#'}>
+            <FaTwitter />
+          </SocialButton>
+          <SocialButton label={'YouTube'} href={'https://www.youtube.com/@anrz'}>
+            <FaYoutube />
+          </SocialButton>
+          <SocialButton label={'Instagram'} href={'https://www.instagram.com/anrz_insta'}>
+            <FaInstagram />
+          </SocialButton>
+        </Stack>
+      </Container>
     </Box>
-  );
-};
-
-export default Footer;
+  )
+}

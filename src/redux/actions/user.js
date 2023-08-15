@@ -75,7 +75,7 @@ export const buySubscription = () => async dispatch => {
       withCredentials: true,
     });
 
-    console.log(data);
+  
 
     dispatch({ type: 'buySubscriptionSuccess', payload: data.subscriptionId });
   } catch (error) {
