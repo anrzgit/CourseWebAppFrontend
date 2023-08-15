@@ -33,7 +33,7 @@ export const deleteCourse = id => async dispatch => {
     };
     dispatch({ type: 'deleteCourseRequest' });
 
-    const { data } = await axios.delete(`${server}/course/${id}`, config);
+    const { data } = await axios.delete(`${server}/courses/${id}`, config);
 
     dispatch({ type: 'deleteCourseSuccess', payload: data.message });
   } catch (error) {
@@ -55,7 +55,7 @@ export const addLecture = (id, formdata) => async dispatch => {
     dispatch({ type: 'addLectureRequest' });
 
     const { data } = await axios.post(
-      `${server}/course/${id}`,
+      `${server}/courses/${id}`,
       formdata,
       config
     );
@@ -76,10 +76,13 @@ export const deleteLecture = (courseId, lectureId) => async dispatch => {
     };
     dispatch({ type: 'deleteLectureRequest' });
 
+    console.log("DELETE LECTURE", courseId, lectureId);
     const { data } = await axios.delete(
-      `${server}/lecture?courseId=${courseId}&lectureId=${lectureId}`,
+      `${server}/lecture/delete?courseId=${courseId}&lectureId=${lectureId}`,
       config
     );
+
+    console.log("deleteLecture", data);
 
     dispatch({ type: 'deleteLectureSuccess', payload: data.message });
   } catch (error) {

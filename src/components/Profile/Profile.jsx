@@ -42,7 +42,7 @@ const Profile = ({ user }) => {
 
   const removeFromPlaylistHandler = async id => {
     await dispatch(removeFromPlaylist(id));
-    dispatch(loadUser());
+    await dispatch(loadUser());
   };
 
   const changeImageSubmitHandler = async (e, image) => {
@@ -76,7 +76,7 @@ const Profile = ({ user }) => {
       toast.error(subscriptionError);
       dispatch({ type: 'clearError' });
     }
-  }, [dispatch, error, message, subscriptionError, subscriptionMessage]);
+  }, [dispatch, error, message, subscriptionError, subscriptionMessage] );
 
   const { isOpen, onClose, onOpen } = useDisclosure();
 

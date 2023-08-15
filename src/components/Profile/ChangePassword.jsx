@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 import toast from 'react-hot-toast';
 import { useDispatch, useSelector } from 'react-redux';
 import { changePassword } from '../../redux/actions/profile';
+import { useNavigate } from 'react-router-dom';
 
 const ChangePassword = () => {
   const [oldPassword, setOldPassword] = useState('');
@@ -17,6 +18,8 @@ const ChangePassword = () => {
 
   const { loading, message, error } = useSelector(state => state.profile);
 
+  const  navigate  = useNavigate();
+
   useEffect(() => {
     if (error) {
       toast.error(error);
@@ -25,8 +28,9 @@ const ChangePassword = () => {
     if (message) {
       toast.success(message);
       dispatch({ type: 'clearMessage' });
+      navigate('/profile');
     }
-  }, [dispatch, error, message]);
+  }, [dispatch, error, message, navigate]);
 
   return (
     <Container py="16" minH={'90vh'}>
@@ -45,7 +49,7 @@ const ChangePassword = () => {
             onChange={e => setOldPassword(e.target.value)}
             placeholder="Old Password"
             type={'password'}
-            focusBorderColor="yellow.500"
+            focusBorderColor="teal.500"
           />
 
           <Input
@@ -54,13 +58,13 @@ const ChangePassword = () => {
             onChange={e => setNewPassword(e.target.value)}
             placeholder="New Password"
             type={'password'}
-            focusBorderColor="yellow.500"
+            focusBorderColor="teal.500"
           />
 
           <Button
             isLoading={loading}
             w="full"
-            colorScheme={'yellow'}
+            colorScheme={'teal'}
             type="submit"
           >
             Change

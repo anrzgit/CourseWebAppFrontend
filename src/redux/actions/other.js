@@ -39,7 +39,7 @@ export const courseRequest = (name, email, course) => async dispatch => {
     dispatch({ type: 'courseRequestRequest' });
 
     const { data } = await axios.post(
-      `${server}/courserequest`,
+      `${server}/course/request`,
       { name, email, course },
       config
     );

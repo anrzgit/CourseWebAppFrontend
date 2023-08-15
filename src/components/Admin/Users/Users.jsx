@@ -23,6 +23,7 @@ import {
   getAllUsers,
   updateUserRole,
 } from '../../../redux/actions/admin';
+import Loader from '../../layout/Loader';
 import toast from 'react-hot-toast';
 
 const Users = () => {
@@ -59,11 +60,13 @@ const Users = () => {
       minH={'100vh'}
       templateColumns={['1fr', '5fr 1fr']}
     >
-      <Box p={['0', '16']} overflowX="auto">
+      {loading ? (<Loader/>) : (
+        <>
+        <Box p={['0', '5']} overflowX="auto">
         <Heading
           textTransform={'uppercase'}
           children="All Users"
-          my="16"
+          my="4"
           textAlign={['center', 'left']}
         />
 
@@ -93,10 +96,12 @@ const Users = () => {
                     loading={loading}
                   />
                 ))}
-            </Tbody>
-          </Table>
-        </TableContainer>
-      </Box>
+              </Tbody>
+            </Table>
+          </TableContainer>
+        </Box>
+        </>
+      )}
 
       <Sidebar />
     </Grid>
@@ -113,6 +118,7 @@ function Row({ item, updateHandler, deleteButtonHandler, loading }) {
       <Td>{item.email}</Td>
       <Td>{item.role}</Td>
       <Td>
+        {/* subscription sguld pe atleast present here to show */}
         {item.subscription && item.subscription.status === 'active'
           ? 'Active'
           : 'Not Active'}

@@ -9,7 +9,9 @@ import {
     VStack,
   } from '@chakra-ui/react';
   import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
   import { Link } from 'react-router-dom';
+import { register } from '../../redux/actions/user';
 
   
   export const fileUploadCss = {
@@ -33,9 +35,10 @@ import {
     const [imagePrev, setImagePrev] = useState('');
     const [image, setImage] = useState('');
   
-    // const dispatch = useDispatch();
+    const dispatch = useDispatch();
     const changeImageHandler = (e) => {
       const file = e.target.files[0];
+      
       const reader = new FileReader();
   
       reader.readAsDataURL(file);
@@ -46,7 +49,7 @@ import {
       };
     };
   
-    const submitHandler = e => {
+    const submitHandler = (e) => {
       e.preventDefault();
       const myForm = new FormData();
   
@@ -55,7 +58,7 @@ import {
       myForm.append('password', password);
       myForm.append('file', image);
   
-      // dispatch(register(myForm));
+      dispatch(register(myForm));
     };
   
     return (

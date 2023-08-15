@@ -14,7 +14,7 @@ import {
 import React from 'react';
 import { ColorModeSwitcher } from '../../ColorModeSwitcher';
 import { RiDashboardFill, RiLogoutBoxLine, RiMenu5Fill } from 'react-icons/ri';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { logout } from '../../redux/actions/user.js';
 
@@ -28,10 +28,12 @@ const Header = ({ isAuthenticated = false, user }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const logoutHandler = () => {
     onClose();
     dispatch(logout());
+    navigate('/login');
   };
 
   return (
@@ -58,8 +60,12 @@ const Header = ({ isAuthenticated = false, user }) => {
       <Drawer placement="left" onClose={onClose} isOpen={isOpen}>
         <DrawerOverlay />
         <DrawerContent>
-          <DrawerHeader borderBottomWidth={'1px'}>COURSE BUNDLER</DrawerHeader>
-          <ColorModeSwitcher />
+          <DrawerHeader borderBottomWidth={'1px'}>
+            <HStack spacing={30}>
+              <div>COURSE BUNDLER</div>
+              <ColorModeSwitcher />
+            </HStack>
+          </DrawerHeader>
           <DrawerBody>
             <VStack spacing={'4'} alignItems="flex-start">
               <LinkButton onClose={onClose} url="/" title="Home" />

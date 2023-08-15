@@ -13,6 +13,7 @@ const UpdateProfile = ({ user }) => {
   const dispatch = useDispatch();
   const submitHandler = async e => {
     e.preventDefault();
+    //await to prevent the page from reloading and take values from the state
     await dispatch(updateProfile(name, email));
     dispatch(loadUser());
     navigate('/profile');
@@ -35,19 +36,19 @@ const UpdateProfile = ({ user }) => {
             onChange={e => setName(e.target.value)}
             placeholder="Name"
             type={'text'}
-            focusBorderColor="yellow.500"
+            focusBorderColor="teal.500"
           />{' '}
           <Input
             value={email}
             onChange={e => setEmail(e.target.value)}
             placeholder="Email"
             type={'email'}
-            focusBorderColor="yellow.500"
+            focusBorderColor="teal.500"
           />
           <Button
             isLoading={loading}
             w="full"
-            colorScheme={'yellow'}
+            colorScheme={'teal'}
             type="submit"
           >
             Update

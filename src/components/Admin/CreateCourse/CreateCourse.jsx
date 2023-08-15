@@ -105,6 +105,7 @@ const CreateCourse = () => {
               type={'text'}
               focusBorderColor="purple.300"
             />
+            
             <Input
               value={createdBy}
               onChange={e => setCreatedBy(e.target.value)}

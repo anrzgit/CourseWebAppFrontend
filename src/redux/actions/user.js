@@ -1,25 +1,28 @@
 import { server } from '../store';
 import axios from 'axios';
 
+
+
+
 export const login = (email, password) => async (dispatch) => {
   try {
     dispatch({ type: 'loginRequest' });
     const { data } = await axios.post(
       `${server}/login`,{ email, password },{
         headers: {
-          'Content-type': 'application/json',
+          "Content-Type": "application/json",
         },
         withCredentials: true,
       }
     );
-    console.log(data);
-    dispatch({ type: 'loginSuccess', payload: data });
+    dispatch({ type: 'loginSuccess', payload: data});
+    
   } catch (error) {
     dispatch({ type: 'loginFail', payload: error.response.data.message });
   }
 };
 
-export const register = formdata => async dispatch => {
+export const register = (formdata) => async dispatch => {
   try {
     dispatch({ type: 'registerRequest' });
 
@@ -27,7 +30,6 @@ export const register = formdata => async dispatch => {
       headers: {
         'Content-type': 'multipart/form-data',
       },
-
       withCredentials: true,
     });
 
@@ -40,8 +42,7 @@ export const register = formdata => async dispatch => {
 export const loadUser = () => async dispatch => {
   try {
     dispatch({ type: 'loadUserRequest' });
-
-    const { data } = await axios.get(
+    const  {data}  = await axios.get(
       `${server}/profile`,
       {
         withCredentials: true,
@@ -74,6 +75,8 @@ export const buySubscription = () => async dispatch => {
       withCredentials: true,
     });
 
+    console.log(data);
+
     dispatch({ type: 'buySubscriptionSuccess', payload: data.subscriptionId });
   } catch (error) {
     dispatch({
@@ -86,11 +89,9 @@ export const buySubscription = () => async dispatch => {
 export const cancelSubscription = () => async dispatch => {
   try {
     dispatch({ type: 'cancelSubscriptionRequest' });
-
     const { data } = await axios.delete(`${server}/subscribe/cancel`, {
       withCredentials: true,
     });
-
     dispatch({ type: 'cancelSubscriptionSuccess', payload: data.message });
   } catch (error) {
     dispatch({
@@ -99,3 +100,51 @@ export const cancelSubscription = () => async dispatch => {
     });
   }
 };
+
+// //add to playlist
+// export const addToPlaylist = (id) => async dispatch => {
+//   try {
+//     dispatch({ type: 'addToPlaylistRequest' });
+
+//     const { data } = await axios.post(
+//       `${server}/playlist/add`,{
+//         id
+//       },{
+//         headers: {
+//           "Content-Type": "application/json",
+//         },
+//         withCredentials: true,
+//       }
+//     );
+
+//     dispatch({ type: 'addToPlaylistSuccess', payload: data.message });
+//   } catch (error) {
+//     dispatch({
+//       type: 'addToPlaylistFail',
+//       payload: error.response.data.message,
+//     });
+//   }
+// }
+
+
+// //remove from playlist
+// export const removeFromPlaylist = (id) => async dispatch => {
+//   try {
+//     dispatch({ type: 'removeFromPlaylistRequest' });
+
+//     const { data } = await axios.delete(
+//       `${server}/playlist/remove?id=${id}`,{
+//         withCredentials: true,
+//       }
+//     );
+
+//     dispatch({ type: 'removeFromPlaylistSuccess', payload: data.message });
+//   } catch (error) {
+//     dispatch({
+//       type: 'removeFromPlaylistFail',
+//       payload: error.response.data.message,
+//     });
+//   }
+// }
+
+

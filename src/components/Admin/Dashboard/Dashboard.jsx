@@ -14,7 +14,7 @@ import Sidebar from '../Sidebar';
 import { DoughnutChart, LineChart } from './Chart';
 import { useDispatch, useSelector } from 'react-redux';
 import { getDashboardStats } from '../../../redux/actions/admin';
-// import Loader from '../../Layout/Loader/Loader';
+import Loader from '../../layout/Loader';
 
 const Databox = ({ title, qty, qtyPercentage, profit }) => (
   <Box
@@ -84,8 +84,7 @@ const Dashboard = () => {
       templateColumns={['1fr', '5fr 1fr']}
     >
       {loading || !stats ? (
-        <h1></h1>
-        // <Loader color="purple.500" />
+        <Loader/>
       ) : (
         <Box boxSizing="border-box" py="16" px={['4', '0']}>
           <Text
