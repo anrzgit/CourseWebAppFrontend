@@ -1,7 +1,6 @@
 
 import {BrowserRouter, Routes, Route,  } from "react-router-dom";
 import Home from './components/Home/Home';
-import Header from './components/layout/Header';
 import Headers from './components/layout/Headers';
 import Courses from './components/Courses/Courses';
 import Footer from './components/layout/Footer';

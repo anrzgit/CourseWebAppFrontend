@@ -15,7 +15,6 @@ import {
   useBreakpointValue,
   useDisclosure,
   Link,
-  Spacer,
 } from '@chakra-ui/react'
 import {
   HamburgerIcon,
@@ -38,13 +37,6 @@ export default function WithSubnavigation({ isAuthenticated = false, user }) {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
-  const logoutHandler = () => {
-    console.log('logout called');
-    dispatch(logout());
-    navigate('/login');
-    console.log('logout success');
-  };
 
   const logoutHandlerAgain = () => {
     console.log('logout called');
