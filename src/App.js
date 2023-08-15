@@ -2,6 +2,7 @@
 import {BrowserRouter, Routes, Route,  } from "react-router-dom";
 import Home from './components/Home/Home';
 import Header from './components/layout/Header';
+import Headers from './components/layout/Headers';
 import Courses from './components/Courses/Courses';
 import Footer from './components/layout/Footer';
 import Login from './components/Auth/Login';
@@ -65,7 +66,8 @@ function App() {
     <BrowserRouter>
     {loading ? <Loader/> : (
       <>
-       <Header isAuthenticated={isAuthenticated} user={user} />
+       <Headers isAuthenticated={isAuthenticated} user={user} />
+       {/* <Header isAuthenticated={isAuthenticated} user={user} /> */}
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/courses" element={<ProtectedRoute>
