@@ -76,13 +76,12 @@ export const deleteLecture = (courseId, lectureId) => async dispatch => {
     };
     dispatch({ type: 'deleteLectureRequest' });
 
-    console.log("DELETE LECTURE", courseId, lectureId);
     const { data } = await axios.delete(
       `${server}/lecture/delete?courseId=${courseId}&lectureId=${lectureId}`,
       config
     );
 
-    console.log("deleteLecture", data);
+    
 
     dispatch({ type: 'deleteLectureSuccess', payload: data.message });
   } catch (error) {

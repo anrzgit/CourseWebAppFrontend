@@ -39,10 +39,8 @@ export default function WithSubnavigation({ isAuthenticated = false, user }) {
   const navigate = useNavigate();
 
   const logoutHandlerAgain = () => {
-    console.log('logout called');
     dispatch(logout());
     navigate('/login');
-    console.log('logout success');
   };
 
   return (

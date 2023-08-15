@@ -27,8 +27,6 @@ const Subscribe = ({ user }) => {
 
   const subscribeHandler = async () => {
     const { data } = await axios.get(`${server}/razorpaykey`);
-    console.log('key', data.keyId);
-    console.log("keyonlydata",data);
     setKey(data.keyId);
     dispatch(buySubscription());
     
@@ -45,7 +43,6 @@ const Subscribe = ({ user }) => {
     }
     if (subscriptionId) {
       const openPopUp = () => {
-        console.log('key', key);
         var options = {
           key : key,
           name: 'CourseBundler',
@@ -66,7 +63,6 @@ const Subscribe = ({ user }) => {
           },
           
         };
-        console.log("key2",key);
 
         const razor = new window.Razorpay(options);
         razor.open();
