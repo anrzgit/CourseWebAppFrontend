@@ -5,16 +5,18 @@ import {
   DrawerContent,
   DrawerHeader,
   DrawerOverlay,
+  Flex,
   HStack,
+  Spacer,
   useDisclosure,
   VStack,
 } from '@chakra-ui/react';
 import React from 'react';
 import { ColorModeSwitcher } from '../../ColorModeSwitcher';
-import { RiDashboardFill, RiMenu5Fill } from 'react-icons/ri';
+import { RiDashboardFill, RiLogoutBoxLine, RiMenu5Fill } from 'react-icons/ri';
 import { Link } from 'react-router-dom';
-// import { useDispatch } from 'react-redux';
-// import { logout } from '../../../redux/actions/user';
+import { useDispatch } from 'react-redux';
+import { logout } from '../../redux/actions/user.js';
 
 const LinkButton = ({ url = '/', title = 'Home', onClose }) => (
   <Link onClick={onClose} to={url}>
@@ -25,15 +27,15 @@ const LinkButton = ({ url = '/', title = 'Home', onClose }) => (
 const Header = ({ isAuthenticated = false, user }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-  // const logoutHandler = () => {
-  //   onClose();
-  //   dispatch(logout());
-  // };
+  const logoutHandler = () => {
+    onClose();
+    dispatch(logout());
+  };
 
   return (
-    <>
+    <> 
       <Button
         onClick={onOpen}
         colorScheme={'teal'}
@@ -47,6 +49,11 @@ const Header = ({ isAuthenticated = false, user }) => {
       >
         <RiMenu5Fill />
       </Button>
+      <Flex margin={6} zIndex={'overlay'} position={'relative'} >
+      <Spacer />
+          <ColorModeSwitcher />
+      </Flex>
+      
 
       <Drawer placement="left" onClose={onClose} isOpen={isOpen}>
         <DrawerOverlay />
@@ -84,10 +91,10 @@ const Header = ({ isAuthenticated = false, user }) => {
                             Profile
                           </Button>
                         </Link>
-                        {/* <Button variant={'ghost'} onClick={logoutHandler}>
+                        <Button variant={'ghost'} onClick={logoutHandler}>
                           <RiLogoutBoxLine />
                           Logout
-                        </Button> */}
+                        </Button>
                       </HStack>
 
                       {user && user.role === 'admin' && (
@@ -117,7 +124,7 @@ const Header = ({ isAuthenticated = false, user }) => {
             </VStack>
           </DrawerBody>
         </DrawerContent>
-      </Drawer>
+      </Drawer>  
     </>
   );
 };

@@ -22,7 +22,7 @@ const PaymentSuccess = () => {
       <VStack boxShadow={'lg'} pb="16" alignItems={'center'} borderRadius="lg">
         <Box
           w="full"
-          bg="yellow.400"
+          bg="teal.400"
           p="4"
           css={{ borderRadius: '8px 8px 0 0' }}
         >

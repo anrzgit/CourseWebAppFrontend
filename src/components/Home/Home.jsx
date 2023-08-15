@@ -19,14 +19,14 @@ import introVideo from '../../assets/videos/intro.mp4';
 
 const Home = () => {
   return (
-    <section className="home">
-      <div className="container">
+    <section className="" >
+      <div className="container" >
         <Stack
           direction={['column', 'row']}
           height="100%"
           justifyContent={['center', 'space-between']}
           alignItems="center"
-          spacing={['16', '56']}
+          spacing={['16', '8']}
         >
           <VStack
             width={'full'}
@@ -77,7 +77,7 @@ const Home = () => {
         </HStack>
       </Box>
 
-      <div className="container2">
+      <div className="container2"   >
         <video
           controls
           controlsList="nodownload nofullscreen noremoteplayback"

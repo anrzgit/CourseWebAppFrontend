@@ -9,75 +9,75 @@ import {
 import axios from 'axios';
 import React, { useState } from 'react';
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+// import { useDispatch, useSelector } from 'react-redux';
 import { buySubscription } from '../../redux/actions/user';
 import { server } from '../../redux/store';
 import toast from 'react-hot-toast';
 import logo from '../../assets/images/logo.png';
 
 const Subscribe = ({ user }) => {
-  const dispatch = useDispatch();
-  const [key, setKey] = useState('');
+  // const dispatch = useDispatch();
+  // const [key, setKey] = useState('');
 
-  const { loading, error, subscriptionId } = useSelector(
-    state => state.subscription
-  );
-  const { error: courseError } = useSelector(state => state.course);
+  // const { loading, error, subscriptionId } = useSelector(
+  //   state => state.subscription
+  // );
+  // const { error: courseError } = useSelector(state => state.course);
 
-  const subscribeHandler = async () => {
-    const {
-      data: { key },
-    } = await axios.get(`${server}/razorpaykey`);
+  // const subscribeHandler = async () => {
+  //   const {
+  //     data: { key },
+  //   } = await axios.get(`${server}/razorpaykey`);
 
-    setKey(key);
-    dispatch(buySubscription());
-  };
+    // setKey(key);
+    // dispatch(buySubscription());
+  // };
 
-  useEffect(() => {
-    if (error) {
-      toast.error(error);
-      dispatch({ type: 'clearError' });
-    }
-    if (courseError) {
-      toast.error(courseError);
-      dispatch({ type: 'clearError' });
-    }
-    if (subscriptionId) {
-      const openPopUp = () => {
-        const options = {
-          key,
-          name: 'CourseBundler',
-          description: 'Get access to all premium content',
-          image: logo,
-          subscription_id: subscriptionId,
-          callback_url: `${server}/paymentverification`,
-          prefill: {
-            name: user.name,
-            email: user.email,
-            contact: '',
-          },
-          notes: {
-            address: '6 pack programmer at youtube',
-          },
-          theme: {
-            color: '#FFC800',
-          },
-        };
+  // useEffect(() => {
+  //   if (error) {
+  //     toast.error(error);
+  //     dispatch({ type: 'clearError' });
+  //   }
+  //   if (courseError) {
+  //     toast.error(courseError);
+  //     dispatch({ type: 'clearError' });
+  //   }
+  //   if (subscriptionId) {
+  //     const openPopUp = () => {
+  //       const options = {
+  //         key,
+  //         name: 'CourseBundler',
+  //         description: 'Get access to all premium content',
+  //         image: logo,
+  //         subscription_id: subscriptionId,
+  //         callback_url: `${server}/paymentverification`,
+  //         prefill: {
+  //           name: user.name,
+  //           email: user.email,
+  //           contact: '',
+  //         },
+  //         notes: {
+  //           address: '6 pack programmer at youtube',
+  //         },
+  //         theme: {
+  //           color: '#FFC800',
+  //         },
+  //       };
 
-        const razor = new window.Razorpay(options);
-        razor.open();
-      };
-      openPopUp();
-    }
-  }, [
-    dispatch,
-    error,
-    courseError,
-    user.name,
-    user.email,
-    key,
-    subscriptionId,
-  ]);
+  //       const razor = new window.Razorpay(options);
+  //       razor.open();
+  //     };
+  //     openPopUp();
+  //   }
+  // }, [
+  //   dispatch,
+  //   error,
+  //   courseError,
+  //   user.name,
+  //   user.email,
+  //   key,
+  //   subscriptionId,
+  // ]);
 
   return (
     <Container h="90vh" p="16">
@@ -89,7 +89,7 @@ const Subscribe = ({ user }) => {
         borderRadius={'lg'}
         spacing="0"
       >
-        <Box bg="yellow.400" p={'4'} css={{ borderRadius: '8px 8px 0 0' }}>
+        <Box bg="teal.400" p={'4'} css={{ borderRadius: '8px 8px 0 0' }}>
           <Text color={'black'} children={`Pro Pack - ₹299.00`} />
         </Box>
         <Box p="4">
@@ -101,9 +101,9 @@ const Subscribe = ({ user }) => {
           <Button
             my="8"
             w="full"
-            colorScheme={'yellow'}
-            onClick={subscribeHandler}
-            isLoading={loading}
+            colorScheme={'teal'}
+            onClick=''
+            isLoading=''
           >
             Buy Now
           </Button>

@@ -11,7 +11,7 @@ import {
 import React from 'react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+// import { useDispatch, useSelector } from 'react-redux';
 import { courseRequest } from '../../redux/actions/other';
 import toast from 'react-hot-toast';
 import { useEffect } from 'react';
@@ -21,36 +21,36 @@ const Request = () => {
   const [email, setEmail] = useState('');
   const [course, setCourse] = useState('');
 
-  const dispatch = useDispatch();
-  const {
-    loading,
-    error,
-    message: stateMessage,
-  } = useSelector(state => state.other);
+  // const dispatch = useDispatch();
+  // const {
+  //   loading,
+  //   error,
+  //   message: stateMessage,
+  // } = useSelector(state => state.other);
 
-  const submitHandler = e => {
-    e.preventDefault();
-    dispatch(courseRequest(name, email, course));
-  };
+  // const submitHandler = e => {
+  //   e.preventDefault();
+  //   dispatch(courseRequest(name, email, course));
+  // };
 
-  useEffect(() => {
-    if (error) {
-      toast.error(error);
-      dispatch({ type: 'clearError' });
-    }
+  // useEffect(() => {
+  //   if (error) {
+  //     toast.error(error);
+  //     dispatch({ type: 'clearError' });
+  //   }
 
-    if (stateMessage) {
-      toast.success(stateMessage);
-      dispatch({ type: 'clearMessage' });
-    }
-  }, [dispatch, error, stateMessage]);
+  //   if (stateMessage) {
+  //     toast.success(stateMessage);
+  //     dispatch({ type: 'clearMessage' });
+  //   }
+  // }, [dispatch, error, stateMessage]);
 
   return (
     <Container h="92vh">
       <VStack h="full" justifyContent={'center'} spacing="16">
         <Heading children="Request New Course" />
 
-        <form onSubmit={submitHandler} style={{ width: '100%' }}>
+        <form onSubmit='' style={{ width: '100%' }}>
           <Box my={'4'}>
             <FormLabel htmlFor="name" children="Name" />
             <Input
@@ -60,7 +60,7 @@ const Request = () => {
               onChange={e => setName(e.target.value)}
               placeholder="Abc"
               type={'text'}
-              focusBorderColor="yellow.500"
+              focusBorderColor="teal.500"
             />
           </Box>
 
@@ -73,7 +73,7 @@ const Request = () => {
               onChange={e => setEmail(e.target.value)}
               placeholder="abc@gmail.com"
               type={'email'}
-              focusBorderColor="yellow.500"
+              focusBorderColor="teal.500"
             />
           </Box>
 
@@ -85,14 +85,14 @@ const Request = () => {
               value={course}
               onChange={e => setCourse(e.target.value)}
               placeholder="Explain the course...."
-              focusBorderColor="yellow.500"
+              focusBorderColor="teal.500"
             />
           </Box>
 
           <Button
-            isLoading={loading}
+            isLoading=''
             my="4"
-            colorScheme={'yellow'}
+            colorScheme={'teal'}
             type="submit"
           >
             Send Mail
@@ -101,7 +101,7 @@ const Request = () => {
           <Box my="4">
             See available Courses!{' '}
             <Link to="/courses">
-              <Button colorScheme={'yellow'} variant="link">
+              <Button colorScheme={'teal'} variant="link">
                 Click
               </Button>{' '}
               here

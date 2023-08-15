@@ -19,14 +19,14 @@ const Founder = () => (
   <Stack direction={['column', 'row']} spacing={['4', '16']} padding={'8'}>
     <VStack>
       <Avatar
-        src="https://avatars.githubusercontent.com/u/25058652"
+        src="https://avatars.githubusercontent.com/u/109352823?s=400&u=3007ffdbfe7c16b0abffc119af8d4ed1fe9660f4&v=4"
         boxSize={['40', '48']}
       />
-      <Text children="Co-Founder" opacity={0.7} />
+      <Text children="Founder" opacity={0.7} />
     </VStack>
 
     <VStack justifyContent={'center'} alignItems={['center', 'flex-start']}>
-      <Heading children="Abhishek Singh" size={['md', 'xl']} />
+      <Heading children="anrz" size={['md', 'xl']} />
       <Text
         textAlign={['center', 'left']}
         children={`Hi, I am a full-stack developer and a teacher.
@@ -79,7 +79,7 @@ const TandC = ({ termsAndCondition }) => (
 const About = () => {
   return (
     <Container maxW={'container.lg'} padding="16" boxShadow={'lg'}>
-      <Heading children="About Us" textAlign={['center', 'left']} />
+      <Heading children=" About Us" textAlign={['center', 'justify']} />
       <Founder />
       <Stack m="8" direction={['column', 'row']} alignItems="center">
         <Text fontFamily={'cursive'} m="8" textAlign={['center', 'left']}>
