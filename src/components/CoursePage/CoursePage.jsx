@@ -1,6 +1,5 @@
-import { Box, Grid, Heading, Text, VStack, color } from '@chakra-ui/react'
+import { Box, Grid, Heading, Text, VStack} from '@chakra-ui/react'
 import React from 'react'
-import introVideo from '../../assets/videos/intro.mp4';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';

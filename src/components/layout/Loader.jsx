@@ -1,4 +1,4 @@
-import { Center, Spinner, VStack } from '@chakra-ui/react'
+import { Spinner, VStack } from '@chakra-ui/react'
 import React from 'react'
 
 const Loader = ({color = "teal"}) => {

@@ -1,4 +1,4 @@
-import { Button, Container, Heading, Link, VStack } from '@chakra-ui/react'
+import { Button, Container, Heading,VStack } from '@chakra-ui/react'
 import React from 'react'
 import { RiErrorWarningFill } from 'react-icons/ri'
 
