@@ -71,12 +71,12 @@ import {
   
         <Stack direction={['column', 'row']} alignItems="center">
           <Link to={`/course/${id}`}>
-            <Button colorScheme={'yellow'}>Watch Now</Button>
+            <Button colorScheme={'teal'}>Watch Now</Button>
           </Link>
           <Button
             isLoading={loading}
             variant={'ghost'}
-            colorScheme={'yellow'}
+            colorScheme={'teal'}
             onClick={() => addToPlaylistHandler(id)}
           >
             Add to playlist
