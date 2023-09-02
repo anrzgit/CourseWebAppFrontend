@@ -6,7 +6,7 @@ const Loader = ({color = "teal"}) => {
     <div>
         <VStack h={'100vh'} justifyContent={'center'} >
 
-            <h1>Please wait Backend server take time for first time </h1>
+            <h1>Please wait I'm using free hosting for backend so It wil take some time for First Start</h1>
             <div>
                 <Spinner thickness='8px' speed={'0.45s'} emptyColor='transparent' color={color} size={'xl'}  />
             </div>
